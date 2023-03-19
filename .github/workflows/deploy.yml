@@ -40,6 +40,7 @@ jobs:
           cd ${{ secrets.PATH }} && \
           # install NPM packages
           npm i && \
+          npm i pm2 && \
           # remove git folders for security
           rm -rf .git && \
           rm -rf .github && \
