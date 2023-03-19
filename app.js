@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.get('/', (req, res)=> {
     res.render('index')
 })
+app.get('/verify', payment.verifypayment)
 app.get('/e-receipt', payment.getReceipt)
 app.get('/error', (req, res)=>{
     res.render('error')
