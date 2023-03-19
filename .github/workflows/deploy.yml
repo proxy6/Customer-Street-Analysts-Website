@@ -1,0 +1,55 @@
+name: Deploy Customer Street Analysts Website
+
+on:
+  push:
+    branches: [ master ]
+  # pull_request:
+  #   branches: [ dev ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Copy file via scp
+      uses: appleboy/scp-action@master
+      env:
+        HOST: ${{ secrets.SSH_HOST }}
+        USERNAME: ${{ secrets.SSH_USER }}
+        KEY: ${{ secrets.SSH_KEY }}
+      with:
+        source: "./"
+        target: ${{ secrets.PATH }}
+        port: ${{secrets.SSH_PORT}}
+        passphrase: ${{ secrets.PASSPHRASE }}  
+        use_insecure_cipher: true
+       
+    - name: Executing remote command
+      uses: appleboy/ssh-action@master
+      with:
+        HOST: ${{ secrets.SSH_HOST }}
+        USERNAME: ${{ secrets.SSH_USER }}
+        KEY: ${{ secrets.SSH_KEY }}
+        PORT: ${{secrets.SSH_PORT}}
+        passphrase: ${{ secrets.PASSPHRASE }}  
+        use_insecure_cipher: true
+        script: |
+          source ${{secrets.SOURCE_PATH}} && \
+          # navigate to project directory
+          cd ${{ secrets.PATH }} && \
+          # install NPM packages
+          npm i && \
+          # remove git folders for security
+          rm -rf .git && \
+          rm -rf .github && \
+          rm -rf .vscode && \
+          rm -rf .gitignore && \
+          rm -rf .eslintrc.json && \
+          rm -rf .env.example && \
+          rm -rf sync.js && \
+          # upload new ENV
+          echo "${{secrets.ENV}}" > .env && \
+          # restart server
+          pm2 startOrReload ecosystem.config.js
