@@ -1,0 +1,248 @@
+
+<html>
+    <head><meta http-equiv="Content-Type"; charset=UTF-8">
+<link href="/receipt/css/bootstrap.css" rel="stylesheet">
+<link href="/receipt/css/style.default.css" rel="stylesheet">
+<link href="/receipt/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/receipt/css/bootstrap-override.css" rel="stylesheet">
+<link href="/receipt/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="/receipt/js/bootstrap.min.js"></script>
+<script src="/receipt/js/jquery-1.12.3.min.js"></script>
+<script src="/receipt/js/html2canvas.js"></script>
+<script src="/receipt/js/jspdf.min.js"></script>
+<!-- <script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $("#aPrint").on('click', function () {
+
+            var payment = user.id;
+            console.log(user.id)
+            window.open('https://portal.abiastateuniversity.edu.ng/Reports/Presenter/e-Recieptaspx.aspx?paymentId=' + payment, '_blank');
+            window.open('http://localhost:2712/Reports/Presenter/e-Recieptaspx.aspx?paymentId=' + payment, '_blank');
+
+
+        });
+
+    });
+</script> -->
+
+<style>
+    .card {
+        padding: 30px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        margin: 30px 0;
+        border: 1px solid #f2f2f2;
+    }
+
+    .text-uppercase {
+        font-weight: bold;
+        margin-right: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 0px !important;
+    }
+
+
+    /*@media print {
+    font-size: 50px;
+    background: #333333;
+    margin-top: 2cm;
+    margin-right: 2cm;
+    margin-bottom: 1.5cm;
+    margin-left: 2cm
+        }*/
+</style>
+
+</head>
+<body data-new-gr-c-s-check-loaded="14.1027.0" data-gr-ext-installed="">
+    <div class="container-fluid" id="printable">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 offset-sm-0">
+            <!-- style="background:  url(/assets/receipt/img/logo.png); height:30%; background-repeat: no-repeat; background-size: 60%; background-position: center;" -->
+            <div class="card" style="background: rgba(255, 255, 255, .9);">
+                <div class="row">
+
+                    <table class="table" style="width: 100%; height: 20%;">
+
+                        <tbody>
+                            <tr>
+                                <td style="width: 50%; border: 0px solid transparent;">
+                                    <div class="col-md-12">
+                                        <img src="/assets/receipt/img/logo.png" width="100px" height="100px">
+                                        <h3 style="font-weight: bold;">Custom Street Analysts</h3>
+                                    </div>
+                                </td>
+
+                             <!--    <td style="width: 50%; border: 0px solid transparent;">
+                                    <div class="col-md-12" style="text-align: right;">
+                                        <img alt="QR code" src="data:image/png;base64,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"><br><br>
+                                        <div class="col-md-12" style="width: 100%;">
+                                            <sub style="font-weight: bold;">Receipt Serial #: <label class="text-capitalize text-bold" style="font-size: 1.7em;"><br>250217</label></sub>
+                                        </div>
+                                    </div>
+                                </td> -->
+                            </tr>
+                    </tbody></table>
+
+
+
+                    <table class="table" style="width: 100%; height: 40%;">
+
+                        <tbody>
+                            <tr>
+                                <td style="width: 100%; border: 0px solid transparent;">
+
+                                    <div class="col-md-12 text-uppercase text-center">
+                                        <h3>PAYMENT RECEIPT</h3>
+                                        <hr>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+
+
+                            <tr>
+                                <td style="width: 100%; border: 0px solid transparent;">
+                                    <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
+                                        <label class="text-uppercase text-bold">Name: </label>
+                                        <label class="text-capitalize"><%= user.fname %> <%= user.lname %></label>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding: 5px; width: 100%; border: 0px solid transparent; font-size: 16px;">
+                                    <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
+                                        <label class="text-uppercase text-bold">Email </label>
+                                        <label class="text-capitalize"><%= user.email %></label>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
+                                    <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
+                                        <label class="text-uppercase text-bold">Phone Number: </label>
+                                        <label class="text-capitalize"><%= user.phone %> </label>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
+
+                                    <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
+                                        <label class="text-uppercase text-bold">Plate Number: </label>
+                                        <!-- <label class="text-capitalize"><%= user.plateNum %></label> -->
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td style="width: 100%; border: 0px solid transparent;">
+                                    <div class="col-md-12">
+                                        <hr>
+                                    </div>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
+                                        <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
+                                            <label class="text-uppercase text-bold">Paystack Reference Number: </label>
+                                            <!-- <label class="text-capitalize"><%= user.reference %></label> -->
+                                        </div>
+                                    </td>
+                                </tr>
+                          
+
+
+                            <tr>
+                                <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
+                                    <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
+                                        <label class="text-uppercase text-bold">Service: </label>
+                                        <label class="text-capitalize">Keke Enumeration</label>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
+                                    <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
+                                        <label class="text-uppercase text-bold">Payment Mode: </label>
+                                        <label class="text-capitalize">Paystack</label>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
+                                    <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
+                                        <label class="text-uppercase text-bold">Payment Date: </label>
+                                        <label class="text-capitalize"><%= user.createdBy %></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+
+
+
+
+
+                    <br>
+                    <div class="col-md-12">
+                        <br><br>
+                        <table class="table table-striped table-bordered" style="border: 1px solid #ccc; width: 100%;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid #ccc; ">
+                                    <th scope="col" style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px; border-right: 1px solid #ccc;">S/N</th>
+                                    <th scope="col" style="padding: 5px; width: 80%; border-bottom: 1px solid #ccc;  font-size: 20px; border-right: 1px solid #ccc;">PAYMENT TYPE</th>
+                                    <th scope="col" style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px;">AMOUNT(N)</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #ccc;">
+                                    <th scope="row" style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px; border-right: 1px solid #ccc;">1</th>
+                                    <td style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px; ">Abia State Keke Enumeration</td>
+                                    <td style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px; border-left: 1px solid #ccc;"><%= user.amount %>.00</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #ccc;">
+                                    <th scope="row"></th>
+                                    <td style="padding: 5px; width: 10%;  border-right: 1px solid #ccc; font-size: 20px;"><b>TOTAL</b></td>
+                                    <td style="padding: 5px; width: 10%; font-size: 20px;"><b><%= user.amount %>.00</b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md-12 text-center text-capitalize" style="margin-top: 20px; text-align: center;">
+                        <br><br>
+                        <p>
+                            <b>Amount in words:</b> Five Thousand Naira Only
+                        </p>
+                    </div>
+
+
+                    <div class="col-md-12 float-right" style="margin-top: 60px;">
+                        <button class="btn btn-primary" onclick="window.print()" target="_blank" id="aPrint">Print Receipt</button>
+                        <a href="/keke/register/<%= user.id %>"> <button class="btn btn-primary">Proceed to Registration</button> </a> 
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/receipt/js/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="/receipt/js/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="/receipt/js/bootstrap.min.js(1)" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

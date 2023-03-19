@@ -1,0 +1,234 @@
+/*
+	1) Logo
+	2) Header Menu
+	3) Homepage Slider
+	4) Hero Image
+	5) "Custom Background Image" Stripe Section
+*/
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	1. Logo
+/*-----------------------------------------------------------------------------------*/
+
+#logo > a {
+	/* Set the width of your logo (180px - the width of theme's default logo image) */
+	width: 180px;
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	2. Header Menu
+/*-----------------------------------------------------------------------------------*/
+
+#navigation {
+	/* If your logo is too high, increase this value (40px - default value) */
+	margin-top: 40px;
+}
+#header.extended #navigation {
+	/* If your logo is too high, increase this value (10px - default value) */
+	margin-top: 10px;
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	3. Homepage Slider
+/*-----------------------------------------------------------------------------------*/
+
+/* Here your should set your images for the homepage slider */
+
+/* image width 1920px for:
+   1) devices with screens larger than 1519px wide (desktops),
+   2) high-resolution devices with screens from 1360 to 1519 pixels wide (desktops & laptops)
+*/
+@media (min-width: 1520px), (min-width: 1360px) and (max-width: 1519px) and (-webkit-min-device-pixel-ratio: 1.5),
+	                        (min-width: 1360px) and (max-width: 1519px) and (-o-min-device-pixel-ratio: 3/2),
+	                        (min-width: 1360px) and (max-width: 1519px) and (min-resolution: 1.5dppx),
+	                        (min-width: 1360px) and (max-width: 1519px) and (min-resolution: 144dpi) {
+	#home-slider .slide1 { background-image: url(../images/banners/slide1-1920x960.jpg); }
+	#home-slider .slide2 { background-image: url(../images/banners/slide2-1920x960.jpg); }
+	#home-slider .slide3 { background-image: url(../images/banners/slide3-1920x960.jpg); }
+	#home-slider .slide4 { background-image: url(../images/banners/slide4-1920x960.jpg); }
+	#home-slider .slide5 { background-image: url(../images/banners/slide5-1920x960.jpg); }
+}
+
+/* image width 1440px for:
+   1) not high-resolution devices with screens up to 1519 pixels wide (desktops & laptops),
+   2) high-resolution devices with screens up to 1359px wide (tablets & phones)
+*/
+@media (max-width: 1519px) and (-webkit-max-device-pixel-ratio: 1.5),
+	   (max-width: 1519px) and (-o-max-device-pixel-ratio: 3/2),
+	   (max-width: 1519px) and (max-resolution: 1.5dppx),
+	   (max-width: 1519px) and (max-resolution: 144dpi),
+	   (max-width: 1359px) and (-webkit-min-device-pixel-ratio: 1.5),
+	   (max-width: 1359px) and (-o-min-device-pixel-ratio: 3/2),
+	   (max-width: 1359px) and (min-resolution: 1.5dppx),
+	   (max-width: 1359px) and (min-resolution: 144dpi) {
+	#home-slider .slide1 { background-image: url(../images/banners/slide1-1440x810.jpg); }
+	#home-slider .slide2 { background-image: url(../images/banners/slide2-1440x810.jpg); }
+	#home-slider .slide3 { background-image: url(../images/banners/slide3-1440x810.jpg); }
+	#home-slider .slide4 { background-image: url(../images/banners/slide4-1440x810.jpg); }
+	#home-slider .slide5 { background-image: url(../images/banners/slide5-1440x810.jpg); }
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	4. Hero Image
+/*-----------------------------------------------------------------------------------*/
+
+/* Here your should set your images for the page title background */
+
+/* image width 1920px for:
+   1) devices with screens larger than 1519px wide (desktops),
+   2) high-resolution devices with screens from 1360 to 1519 pixels wide (desktops & laptops)
+*/
+@media (min-width: 1520px), (min-width: 1360px) and (max-width: 1519px) and (-webkit-min-device-pixel-ratio: 1.5),
+	                        (min-width: 1360px) and (max-width: 1519px) and (-o-min-device-pixel-ratio: 3/2),
+	                        (min-width: 1360px) and (max-width: 1519px) and (min-resolution: 1.5dppx),
+	                        (min-width: 1360px) and (max-width: 1519px) and (min-resolution: 144dpi) {
+	#hero-image .banner-about-us {
+		background-image: url(../images/banners/banner-about-us-1920x640.jpg);
+	}
+	#hero-image .banner-our-difference {
+		background-image: url(../images/banners/banner-our-difference-1920x640.jpg);
+	}
+	#hero-image .banner-team {
+		background-image: url(../images/banners/banner-team-1920x640.jpg);
+	}
+	#hero-image .banner-our-heritage {
+		background-image: url(../images/banners/banner-our-heritage-1920x640.jpg);
+	}
+	#hero-image .banner-how-we-can-help {
+		background-image: url(../images/banners/banner-how-we-can-help-1920x640.jpg);
+	}
+	#hero-image .banner-services {
+		background-image: url(../images/banners/banner-services-1920x640.jpg);
+	}
+	#hero-image .banner-how-we-work {
+		background-image: url(../images/banners/banner-how-we-work-1920x640.jpg);
+	}
+	#hero-image .banner-investment-approach {
+		background-image: url(../images/banners/banner-investment-approach-1920x640.jpg);
+	}
+	#hero-image .banner-fees {
+		background-image: url(../images/banners/banner-fees-1920x640.jpg);
+	}
+	#hero-image .banner-who-we-help {
+		background-image: url(../images/banners/banner-who-we-help-1920x640.jpg);
+	}
+	#hero-image .banner-get-started {
+		background-image: url(../images/banners/banner-get-started-1920x640.jpg);
+	}
+	#hero-image .banner-client-stories {
+		background-image: url(../images/banners/banner-client-stories-1920x640.jpg);
+	}
+	#hero-image .banner-faq {
+		background-image: url(../images/banners/banner-faq-1920x640.jpg);
+	}
+	#hero-image .banner-case-study-v1,
+	#hero-image .banner-single-service-v1 {
+		background-image: url(../images/banners/banner-service-1-1920x640.jpg);
+	}
+	#hero-image .banner-case-study-v2,
+	#hero-image .banner-single-service-v2 {
+		background-image: url(../images/banners/banner-service-2-1920x640.jpg);
+	}
+	#hero-image .banner-case-study-v3,
+	#hero-image .banner-single-service-v3 {
+		background-image: url(../images/banners/banner-service-3-1920x640.jpg);
+	}
+	#hero-image .banner-blog {
+		background-image: url(../images/banners/banner-blog-1920x640.jpg);
+	}
+	#hero-image .banner-contact {
+		background-image: url(../images/banners/banner-contact-1920x640.jpg);
+	}
+}
+
+/* image width 1440px for:
+   1) not high-resolution devices with screens up to 1519 pixels wide (desktops & laptops),
+   2) high-resolution devices with screens up to 1359px wide (tablets & phones)
+*/
+@media (max-width: 1519px) and (-webkit-max-device-pixel-ratio: 1.5),
+	   (max-width: 1519px) and (-o-max-device-pixel-ratio: 3/2),
+	   (max-width: 1519px) and (max-resolution: 1.5dppx),
+	   (max-width: 1519px) and (max-resolution: 144dpi),
+	   (max-width: 1359px) and (-webkit-min-device-pixel-ratio: 1.5),
+	   (max-width: 1359px) and (-o-min-device-pixel-ratio: 3/2),
+	   (max-width: 1359px) and (min-resolution: 1.5dppx),
+	   (max-width: 1359px) and (min-resolution: 144dpi) {
+	#hero-image .banner-about-us {
+		background-image: url(../images/banners/banner-about-us-1440x480.jpg);
+	}
+	#hero-image .banner-our-difference {
+		background-image: url(../images/banners/banner-our-difference-1440x480.jpg);
+	}
+	#hero-image .banner-team {
+		background-image: url(../images/banners/banner-team-1440x480.jpg);
+	}
+	#hero-image .banner-our-heritage {
+		background-image: url(../images/banners/banner-our-heritage-1440x480.jpg);
+	}
+	#hero-image .banner-how-we-can-help {
+		background-image: url(../images/banners/banner-how-we-can-help-1440x480.jpg);
+	}
+	#hero-image .banner-services {
+		background-image: url(../images/banners/banner-services-1440x480.jpg);
+	}
+	#hero-image .banner-how-we-work {
+		background-image: url(../images/banners/banner-how-we-work-1440x480.jpg);
+	}
+	#hero-image .banner-investment-approach {
+		background-image: url(../images/banners/banner-investment-approach-1440x480.jpg);
+	}
+	#hero-image .banner-fees {
+		background-image: url(../images/banners/banner-fees-1440x480.jpg);
+	}
+	#hero-image .banner-who-we-help {
+		background-image: url(../images/banners/banner-who-we-help-1440x480.jpg);
+	}
+	#hero-image .banner-get-started {
+		background-image: url(../images/banners/banner-get-started-1440x480.jpg);
+	}
+	#hero-image .banner-client-stories {
+		background-image: url(../images/banners/banner-client-stories-1440x480.jpg);
+	}
+	#hero-image .banner-faq {
+		background-image: url(../images/banners/banner-faq-1440x480.jpg);
+	}
+	#hero-image .banner-case-study-v1,
+	#hero-image .banner-single-service-v1 {
+		background-image: url(../images/banners/banner-service-1-1440x480.jpg);
+	}
+	#hero-image .banner-case-study-v2,
+	#hero-image .banner-single-service-v2 {
+		background-image: url(../images/banners/banner-service-2-1440x480.jpg);
+	}
+	#hero-image .banner-case-study-v3,
+	#hero-image .banner-single-service-v3 {
+		background-image: url(../images/banners/banner-service-3-1440x480.jpg);
+	}
+	#hero-image .banner-blog {
+		background-image: url(../images/banners/banner-blog-1440x480.jpg);
+	}
+	#hero-image .banner-contact {
+		background-image: url(../images/banners/banner-contact-1440x480.jpg);
+	}
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	5. "Custom Background Image" Stripe Section
+/*-----------------------------------------------------------------------------------*/
+
+/* Here your should set your images for the "Custom Background Image" stripe section */
+
+.stripe-custom-bg-image1 {
+	background-image: url(../images/custom-bg-image-1.jpg);
+}
+.stripe-custom-bg-image2 {
+	background-image: url(../images/banners/banner-fees-1920x640.jpg);
+}
+.stripe-custom-bg-image3 {
+	background-image: url(../images/banners/banner-services-1920x640.jpg);
+}
