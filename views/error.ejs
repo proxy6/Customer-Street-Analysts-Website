@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="css/secondary-color/orange.css" id="secondary-color">
 	<link rel="stylesheet" href="css/extra-color/red.css" id="extra-color">
 	<link rel="stylesheet" href="css/custom.css">
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:400,700%7CQuattrocento+Sans:400,700,400italic,700italic%7CRoboto+Slab:400%7COpen+Sans:400,700,300,600,400italic">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CQuattrocento+Sans:400,700,400italic,700italic%7CRoboto+Slab:400%7COpen+Sans:400,700,300,600,400italic">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/ionicons.min.css">
 	<link rel="stylesheet" href="css/animate.min.css">
@@ -180,79 +180,65 @@
 
 <!-- START FOOTER -->
 
-<footer id="footer" class="footer-style-2">
+<footer id="footer" class="footer-style-1">
 	
 	<div class="container"> <!-- Container -->
 		
 		<div class="row">
-			
+		
 			<div class="col-sm-4 columns">
 				
-				<div class="offset-md-right-40px clearfix">
-					
-					<!-- Contact Details -->
-					<h4 class="title">Get in touch</h4>
-					
-					<p class="contact-address">Suite 87, Level 12, 316 Adelaide Street, <br>
-					Brisbane City, QLD, 4000</p>
-					<p class="contact-phone"><a href="tel:0736214076" class="phone-number">(07) 3621 4076</a></p>
-					<p class="contact-email"><a href="mailto:info@annuity.com.au">info@annuity.com.au</a></p>
-					
-					<ul class="fa-icon-list clearfix">
-						<li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
-						<li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="fa fa-fw fa-twitter"></i></a></li>
-						<li><a href="https://www.linkedin.com/" title="LinkedIn" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
-					</ul>
-					
+				<!-- Contact Details -->
+				<div class="contact-details clearfix">
+					<div class="contact-details-title">Get In Touch</div>
+					<p class="contact-phone"><a href="tel:0736214076" class="phone-number">(234) 9064 852 460</a></p>
+					<p class="contact-email"><a href="mailto:info@customstreetanalysts.com">info@customstreetanalysts.com</a></p>
+			
 				</div>
 				
 			</div>
 			
-			<div class="col-sm-4 columns">
+			<div class="col-sm-8 columns">
 				
-				<div class="offset-md-right-40px">
-					<h4 class="title">Useful links</h4>
-					
-					<!-- Footer Menu -->
-					<ul class="footer-menu">
-						<li><a href="about-us.html">About Us</a></li>
-						<li><a href="how-we-can-help.html">How We Can Help</a></li>
-						<li><a href="services.html">Our Services</a></li>
-						<li><a href="get-started.html">How to Get Started</a></li>
-						<li><a href="client-stories.html">Client Stories</a></li>
-					</ul>
-					
-				</div>
-				
-			</div>
-			
-			<div class="col-sm-4 columns">
-				
-				<h4 class="title">Stay informed</h4>
-				
-				<!-- Subscription Form -->
-				<form action="https://e-merald.com/themes/annuity/php/mail-subscription.php" method="post" class="subscription-form">
-					<fieldset class="subscription-fields-wrapper">
-						<div class="field-subscriber-name">
-							<input type="text" name="subscriber-name" value="" maxlength="200" placeholder="Name *" required>
+				<!-- Contact Form -->
+				<form action="/contact" method="post" id="contact-form" class="contact-form contact-form-footer clearfix">
+					<fieldset class="contact-fields-wrapper clearfix">
+						<div class="field-author">
+							<input type="text" id="author" name="author" value="" maxlength="200" placeholder="Name *" required>
 						</div>
-						<div class="field-subscriber-email">
-							<input type="email" name="subscriber-email" value="" maxlength="100" placeholder="Email *" required>
+						<div class="field-phone">
+							<input type="text" id="phone" name="phone" value="" maxlength="100" placeholder="Phone">
+						</div>
+						<div class="field-email">
+							<input type="email" id="email" name="email" value="" maxlength="100" placeholder="Email *" required>
+						</div>
+						<div class="field-subject select-wrapper">
+							<select id="subject" name="subject">
+								<option value="">-- Area of interest --</option>
+								<option value="general-enquiry">General Enquiry</option>
+								<option value="contact-advisor">Contact an Advisor</option>
+								<option value="financial-health-check">Financial Health-Check</option>
+							</select>
+						</div>
+					</fieldset>
+					<fieldset class="contact-fields-wrapper">
+						<div class="field-message">
+							<textarea id="message" name="message" rows="5" maxlength="5000" placeholder="Message *" required></textarea>
 						</div>
 						<div class="field-blank hidden-xs-up">
-							<input type="text" name="sender-name" value="" placeholder="Leave this field blank">
+							<input type="text" id="sender-name" name="sender-name" value="" placeholder="Leave this field blank">
 						</div>
 						<div class="field-submit">
-							<input type="submit" name="subscribe" value="" class="button">
+							<input type="submit" id="submit" name="submit" value="Submit" class="button">
 							<span class="loader hidden-xs-up"></span>
 						</div>
 					</fieldset>
 				</form>
 				
-				<div class="subscription-form-message info">
-					<p>Sign up to receive the latest news and resources</p>
+				<div id="contact-form-message" class="info">
+					<p>To make an enquiry please complete the form above.</p>
 				</div>
-				<!-- end Subscription Form -->
+				<!-- end Contact Form -->
 				
 			</div>
 		
@@ -269,15 +255,7 @@
 		<div class="row">
 		
 			<div class="columns bottom-left-col">
-				<p>© 2017 Annuity Template</p>
-			</div>
-			
-			<div class="columns bottom-right-col">
-				<ul class="links">
-					<li><a href="#">Privacy Policy</a><span>|</span></li>
-					<li><a href="#">Terms & Conditions</a><span>|</span></li>
-					<li><a href="#">Financial Services Guide</a></li>
-				</ul>
+				<p>© 2023 Custom Street Analysts</p>
 			</div>
 			
 			<span class="scroll-top"><i class="ion ion-android-arrow-up"></i></span>
