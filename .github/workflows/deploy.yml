@@ -1,4 +1,4 @@
-name: Deploy Customer Street Analysts Website
+name: Deploy Custom Street Analysts Website
 
 on:
   push:

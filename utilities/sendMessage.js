@@ -35,7 +35,7 @@ async function sendMessage(body) {
 
 
     let info = await transporter.sendMail({
-        from: '"Customer Street Analyst Website Contact", <mail@customstreetanalysts.com>',
+        from: '"Custom Street Analysts Website Contact", <mail@customstreetanalysts.com>',
         to: 'progresseze@gmail.com',
         subject: "Customer Street Analyst Contact",
         html: output // html body
