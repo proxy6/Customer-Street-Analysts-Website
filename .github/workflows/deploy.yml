@@ -18,12 +18,12 @@ jobs:
       env:
         HOST: ${{ secrets.SSH_HOST }}
         USERNAME: ${{ secrets.SSH_USER }}
-        KEY: ${{ secrets.SSH_KEY }}
+        PASSWORD: ${{ secrets.SSH_PASS }}
       with:
         source: "./"
         target: ${{ secrets.PATH }}
         port: ${{secrets.SSH_PORT}}
-        passphrase: ${{ secrets.PASSPHRASE }}  
+        password: ${{ secrets.SSH_PASS }}  
         use_insecure_cipher: true
        
     - name: Executing remote command
@@ -31,9 +31,8 @@ jobs:
       with:
         HOST: ${{ secrets.SSH_HOST }}
         USERNAME: ${{ secrets.SSH_USER }}
-        KEY: ${{ secrets.SSH_KEY }}
         PORT: ${{secrets.SSH_PORT}}
-        passphrase: ${{ secrets.PASSPHRASE }}  
+        PASSWORD: ${{ secrets.SSH_PASS }}  
         use_insecure_cipher: true
         script: |
           source ${{secrets.SOURCE_PATH}} && \
