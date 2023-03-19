@@ -29,7 +29,7 @@ app.post('/contact-us', async (req, res) => {
     let resp =  await sendMessage(req.body);
     res.send(resp);
 } )
-app.get('/e-receipt/:id', payment.getReceipt)
+app.get('/e-receipt', payment.getReceipt)
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

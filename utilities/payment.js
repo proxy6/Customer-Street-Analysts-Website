@@ -93,10 +93,10 @@ exports.verifypayment = async (req,res) => {
 };
 
 exports.getReceipt = async(req, res)=>{
-    const {id}= req.params;
+    const {trxref}= req.query;
     Payment.findOne({
         where: {
-          id:id,
+          reference:trxref,
         }
       }).then(result=>{
         if(!result){
