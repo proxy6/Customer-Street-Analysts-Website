@@ -6,18 +6,6 @@ const {initializePayment, verifyPayment} = require('./paystack')(request);
 
 
 exports.initpayment = async (req, res, next) => {
-    // const payment = await Payment.findOne({
-    //     where:{
-    //         email: req.body.email,
-    //         verified: true
-    //     }
-    // })
-    // if (payment){
-    //     let data= 'Email Already Used to make payment';
-    //     res.render('payment-not-found-page', {
-    //         data,
-    //     })
-    // }
     const form = _.pick(req.body,['fname','lname','email',  'phone', 'amount', 'payment_type']);
     form.metadata = {
         fullname : `${form.fname}  ${form.lname}`,
@@ -33,7 +21,7 @@ exports.initpayment = async (req, res, next) => {
         let data = 'Error initializing paystack payment, please make sure you are connected to the internet'
         if(error) {
             console.log(error)
-            return res.render('payment-not-found-page', {
+            return res.render('error', {
             data,
         })
         }
@@ -51,7 +39,7 @@ exports.verifypayment = async (req,res) => {
         if(error){
             //handle errors appropriately
             let data = "Paystack payment verification failed"
-            res.status(500).render('payment-not-found-page', {
+            res.status(500).render('error', {
                 data,
             })
         }
@@ -64,7 +52,7 @@ exports.verifypayment = async (req,res) => {
        const existing = Payment.findOne({
         reference:pay.reference
        })
-      // if(existing) return res.render("error", {data: "Payment Refernce Already Used"})
+       if(existing) return res.render("error", {data: "Payment Refernce Already Used"})
        Payment.create({
         fname: pay.firstname,
         lname: pay.surname,
@@ -75,32 +63,14 @@ exports.verifypayment = async (req,res) => {
         paymentType
        })
        .then(result=>{
-        console.log(result)
+        //send welcom message to mail
+
         res.redirect(`/e-receipt/${result.id}`)
        })
        .catch(e=>{
         console.log(e)
         res.status(500).send('an error occured')
        })
-       
-        // Payment.create({
-        //  reference: pay.reference,
-        //  email: pay.email,
-        //  amount: pay.amount/100,
-        //  fullName: pay.full_name, 
-        //  surname: pay.surname,
-        //  firstName: pay.first_name,
-        //  otherName: pay.other_name,
-        //  plateNum:  pay.plate_num,
-        //  phoneNum: pay.phone_num,
-        //  verified: true  
-        // })
-        // .then(result=>{
-        //     res.redirect(`/paystack/e-receipt/${result.id}`)
-        // })
-        // .catch((e)=>{
-        //    res.status(500).send('an error occured')
-        // })
       
     })
 };
@@ -118,7 +88,7 @@ exports.getReceipt = async(req, res)=>{
         user: result,
         })
     }).catch(e=>{
-        res.status(500).send('Payment Reference Not Found')
+        res.status(500).render('error', {data: 'An Error Occured while fetching receipt'})
     })  
     
 }

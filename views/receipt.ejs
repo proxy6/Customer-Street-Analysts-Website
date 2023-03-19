@@ -165,7 +165,7 @@
                                 <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
                                     <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
                                         <label class="text-uppercase text-bold">Payment Date: </label>
-                                        <label class="text-capitalize"><%= user.createdAt %></label>
+                                        <label class="text-capitalize"><%= user.createdAt.getDate() %> - <%= user.createdAt.getMonth() %> - <%= user.createdAt.getFullYear() %></label>
                                     </div>
                                 </td>
                             </tr>
@@ -187,7 +187,7 @@
                                 <tr style="border-bottom: 1px solid #ccc; ">
                                     <th scope="col" style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px; border-right: 1px solid #ccc;">S/N</th>
                                     <th scope="col" style="padding: 5px; width: 80%; border-bottom: 1px solid #ccc;  font-size: 20px; border-right: 1px solid #ccc;">PAYMENT TYPE</th>
-                                    <th scope="col" style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px;">AMOUNT(N)</th>
+                                    <th scope="col" style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px;">AMOUNT(&#8358;)</th>
 
                                 </tr>
                             </thead>
@@ -195,12 +195,12 @@
                                 <tr style="border-bottom: 1px solid #ccc;">
                                     <th scope="row" style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px; border-right: 1px solid #ccc;">1</th>
                                     <td style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px; ">Training Fee <%= user.paymentType %></td>
-                                    <td style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px; border-left: 1px solid #ccc;"><%= user.amount %>.00</td>
+                                    <td style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px; border-left: 1px solid #ccc;"><%= new Intl.NumberFormat().format(user.amount) %>.00</td>
                                 </tr>
                                 <tr style="border-bottom: 1px solid #ccc;">
                                     <th scope="row"></th>
                                     <td style="padding: 5px; width: 10%;  border-right: 1px solid #ccc; font-size: 20px;"><b>TOTAL</b></td>
-                                    <td style="padding: 5px; width: 10%; font-size: 20px;"><b><%= user.amount %>.00</b></td>
+                                    <td style="padding: 5px; width: 10%; font-size: 20px;"><b><%= new Intl.NumberFormat().format(user.amount) %>.00</b></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -208,15 +208,14 @@
 
                     <div class="col-md-12 text-center text-capitalize" style="margin-top: 20px; text-align: center;">
                         <br><br>
-                        <!-- <p>
-                            <b>Amount in words:</b> Five Thousand Naira Only
-                        </p> -->
+                        <p>
+                            <b>Please check your email for further instructions</b>
+                        </p>
                     </div>
 
 
                     <div class="col-md-12 float-right" style="margin-top: 60px;">
                         <button class="btn btn-primary" onclick="window.print()" target="_blank" id="aPrint">Print Receipt</button>
-                        <a href="/keke/register/<%= user.id %>"> <button class="btn btn-primary">Proceed to Registration</button> </a> 
                     </div>
 
                 </div>
