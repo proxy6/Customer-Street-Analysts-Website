@@ -17,6 +17,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.get('/', (req, res)=> {
     res.render('index')
 })
+app.get('/e-receipt', payment.getReceipt)
+app.get('/error', (req, res)=>{
+    res.render('error')
+})
 app.get('/contact', (req, res) => {
     res.render('contact');
 })
@@ -29,7 +33,7 @@ app.post('/contact-us', async (req, res) => {
     let resp =  await sendMessage(req.body);
     res.send(resp);
 } )
-app.get('/e-receipt', payment.getReceipt)
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
