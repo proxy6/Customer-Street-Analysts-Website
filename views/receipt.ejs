@@ -71,8 +71,9 @@
                             <tr>
                                 <td style="width: 50%; border: 0px solid transparent;">
                                     <div class="col-md-12">
-                                        <img src="/assets/receipt/img/logo.png" width="100px" height="100px">
-                                        <h3 style="font-weight: bold;">Custom Street Analysts</h3>
+                                        <!-- <img src="images/EQFI2.png" alt="logo" class="normal-dpi"> -->
+                                        <img src="/images/EQFI2.png" width="200px" height="100px">
+                                        <!-- <h3 style="font-weight: bold;">CUSTOM STREET ANALYSTS</h3> -->
                                     </div>
                                 </td>
 
@@ -113,31 +114,23 @@
                                     </div>
                                 </td>
                             </tr>
-
+                            
                             <tr>
-                                <td style="padding: 5px; width: 100%; border: 0px solid transparent; font-size: 16px;">
+                                <td style="width: 100%; border: 0px solid transparent;">
                                     <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
-                                        <label class="text-uppercase text-bold">Email </label>
+                                        <label class="text-uppercase text-bold">Email: </label>
                                         <label class="text-capitalize"><%= user.email %></label>
                                     </div>
                                 </td>
                             </tr>
+
+                     
 
                             <tr>
                                 <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
                                     <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
                                         <label class="text-uppercase text-bold">Phone Number: </label>
                                         <label class="text-capitalize"><%= user.phone %> </label>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
-
-                                    <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
-                                        <label class="text-uppercase text-bold">Plate Number: </label>
-                                        <!-- <label class="text-capitalize"><%= user.plateNum %></label> -->
                                     </div>
                                 </td>
                             </tr>
@@ -154,22 +147,11 @@
                                     <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
                                         <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
                                             <label class="text-uppercase text-bold">Paystack Reference Number: </label>
-                                            <!-- <label class="text-capitalize"><%= user.reference %></label> -->
+                                            <label class="text-capitalize"><%= user.reference %></label>
                                         </div>
                                     </td>
                                 </tr>
                           
-
-
-                            <tr>
-                                <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
-                                    <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
-                                        <label class="text-uppercase text-bold">Service: </label>
-                                        <label class="text-capitalize">Keke Enumeration</label>
-                                    </div>
-                                </td>
-                            </tr>
-
                             <tr>
                                 <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
                                     <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
@@ -178,12 +160,12 @@
                                     </div>
                                 </td>
                             </tr>
-
+                       
                             <tr>
                                 <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
                                     <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
                                         <label class="text-uppercase text-bold">Payment Date: </label>
-                                        <label class="text-capitalize"><%= user.createdBy %></label>
+                                        <label class="text-capitalize"><%= user.createdAt %></label>
                                     </div>
                                 </td>
                             </tr>
@@ -212,7 +194,7 @@
                             <tbody>
                                 <tr style="border-bottom: 1px solid #ccc;">
                                     <th scope="row" style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px; border-right: 1px solid #ccc;">1</th>
-                                    <td style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px; ">Abia State Keke Enumeration</td>
+                                    <td style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px; ">Training Fee <%= user.paymentType %></td>
                                     <td style="padding: 5px; width: 10%; border-bottom: 1px solid #ccc; font-size: 20px; border-left: 1px solid #ccc;"><%= user.amount %>.00</td>
                                 </tr>
                                 <tr style="border-bottom: 1px solid #ccc;">
@@ -226,9 +208,9 @@
 
                     <div class="col-md-12 text-center text-capitalize" style="margin-top: 20px; text-align: center;">
                         <br><br>
-                        <p>
+                        <!-- <p>
                             <b>Amount in words:</b> Five Thousand Naira Only
-                        </p>
+                        </p> -->
                     </div>
 
 

@@ -6,7 +6,7 @@ const paymentLogSchema = new mongoose.Schema({
         trim: true
     },
     lname:{
-        type: Number,
+        type: String,
         required: true, 
     },
     email: {
@@ -22,6 +22,10 @@ const paymentLogSchema = new mongoose.Schema({
         required: true
     },
     reference: {
+        type: String,
+        required: true
+    },
+    paymentType: {
         type: String,
         required: true
     },

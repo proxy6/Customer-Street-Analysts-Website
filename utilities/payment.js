@@ -1,7 +1,7 @@
 const request = require('request');
 const path = require('path')
 const _ = require('lodash');
-const Payment = require('../models/payment.model')
+const {Payment} = require('../models/payment.model')
 const {initializePayment, verifyPayment} = require('./paystack')(request);
 
 
@@ -18,13 +18,14 @@ exports.initpayment = async (req, res, next) => {
     //         data,
     //     })
     // }
-    const form = _.pick(req.body,['fname','lname','email',  'phone', 'amount']);
+    const form = _.pick(req.body,['fname','lname','email',  'phone', 'amount', 'payment_type']);
     form.metadata = {
         fullname : `${form.fname}  ${form.lname}`,
         surname: form.lname,
         firstname: form.fname,
         email: form.email,
-        phone: form.phone
+        phone: form.phone,
+        paymentType: form.payment_type
     }
     
     form.amount *= 100;
@@ -55,18 +56,30 @@ exports.verifypayment = async (req,res) => {
             })
         }
         response = JSON.parse(body);        
-        console.log(response)
-        const data = _.at(response.data, ['reference', 'amount','customer.email', 'metadata.fullname', 'metadata.surname', 'metadata.firstname', 'metadata.phone']);
+        const data = _.at(response.data, ['reference', 'amount','customer.email', 'metadata.fullname', 'metadata.surname', 'metadata.firstname', 'metadata.phone', 'metadata.paymentType']);
       
-        [reference, amount, email, fullname, surname, firstname, phone] =  data;
-       const pay = {reference, amount, email, fullname, surname, firstname, phone}
-      
-       Payment.create(pay)
+        [reference, amount, email, fullname, surname, firstname, phone, paymentType] =  data;
+       const pay = {reference, amount, email, fullname, surname, firstname, phone, paymentType}
+        
+       const existing = Payment.findOne({
+        reference:pay.reference
+       })
+      // if(existing) return res.render("error", {data: "Payment Refernce Already Used"})
+       Payment.create({
+        fname: pay.firstname,
+        lname: pay.surname,
+        email,
+        phone,
+        reference,
+        amount: pay.amount/100,
+        paymentType
+       })
        .then(result=>{
         console.log(result)
         res.redirect(`/e-receipt/${result.id}`)
        })
        .catch(e=>{
+        console.log(e)
         res.status(500).send('an error occured')
        })
        
@@ -93,15 +106,13 @@ exports.verifypayment = async (req,res) => {
 };
 
 exports.getReceipt = async(req, res)=>{
-    const {trxref}= req.query;
+    const {id}= req.params
     Payment.findOne({
-        where: {
-          reference:trxref,
-        }
-      }).then(result=>{
+          _id:id,
+    }).then(result=>{
         if(!result){
             let data = `Payment Reference not found`
-            return res.status(404).render('payment-not-found-page', {data})
+            return res.render('error', {data})
         }
        return res.render('receipt', {
         user: result,

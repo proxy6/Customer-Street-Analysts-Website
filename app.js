@@ -18,7 +18,6 @@ app.get('/', (req, res)=> {
     res.render('index')
 })
 app.get('/verify', payment.verifypayment)
-app.get('/e-receipt', payment.getReceipt)
 app.get('/error', (req, res)=>{
     res.render('error')
 })
@@ -33,7 +32,9 @@ app.post('/pay', payment.initpayment)
 app.post('/contact-us', async (req, res) => {
     let resp =  await sendMessage(req.body);
     res.send(resp);
-} )
+})
+
+app.get('/e-receipt/:id', payment.getReceipt)
 
 
 const port = process.env.PORT || 3000;
