@@ -1,7 +1,8 @@
 const request = require('request');
 const path = require('path')
 const _ = require('lodash');
-const {Payment} = require('../models/payment.model')
+const {Payment} = require('../models/payment.model');
+const { sendWelcomeMessage } = require('./sendMessage');
 const {initializePayment, verifyPayment} = require('./paystack')(request);
 
 
@@ -35,7 +36,7 @@ exports.initpayment = async (req, res, next) => {
 
 exports.verifypayment = async (req,res) => {
     const ref = req.query.reference;
-    verifyPayment(ref, (error, body)=>{
+    verifyPayment(ref, async (error, body)=>{
         if(error){
             //handle errors appropriately
             let data = "Paystack payment verification failed"
@@ -48,8 +49,8 @@ exports.verifypayment = async (req,res) => {
       
         [reference, amount, email, fullname, surname, firstname, phone, paymentType] =  data;
        const pay = {reference, amount, email, fullname, surname, firstname, phone, paymentType}
-        
-       const existing = Payment.findOne({
+  
+       const existing = await Payment.findOne({
         reference:pay.reference
        })
        if(existing) return res.render("error", {data: "Payment Refernce Already Used"})
@@ -62,9 +63,9 @@ exports.verifypayment = async (req,res) => {
         amount: pay.amount/100,
         paymentType
        })
-       .then(result=>{
+       .then( async result=>{
         //send welcom message to mail
-
+        await sendWelcomeMessage(result)
         res.redirect(`/e-receipt/${result.id}`)
        })
        .catch(e=>{

@@ -1,60 +1,4 @@
-require("dotenv").config();
-const nodemailer = require("nodemailer")
-async function sendMessage(body) {
-    const output = `
-        <p>You have a new contact information</p>
-        <h3>Contact Details</h3>
-        <ul>
-        <li>Name: ${body.name}</li>
-        <li>Email: ${body.email}</li>
-        <li>Email: ${body.phone}</li>
-        <li>Email: ${body.interest}</li>
-        <li>Date: ${new Date()}</li>
-        </ul>
-        <h3>Message:</h3>
-        <p>${body.message}</p>
-        `
-    let transporter = nodemailer.createTransport({
-        host: process.env.EMAIL_HOST,
-        port: process.env.EMAIL_PORT,
-        secure: true,
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASSWORD
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-    });
-    transporter.verify((err, success) => {
-        if (err) {
-            console.log(err)
-        }
-        return console.log('serveris ready to receive message ' + success);
-    })
-
-
-    let info = await transporter.sendMail({
-        from: '"Custom Street Analysts Website Contact", <mail@customstreetanalysts.com>',
-        to: 'progresseze@gmail.com',
-        subject: "Customer Street Analyst Contact",
-        html: output // html body
-    },
-        function (err, info) {
-            if (err) {
-                console.log(err)
-                return
-            }
-            console.log("Email sent")
-            return 'Email Sent'
-        })
-}
-
-
-
-async function sendWelcomeMessage(data) {
-    const output = `
-    <html>
+<html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="x-apple-disable-message-reformatting" />
@@ -559,7 +503,7 @@ font-family: Arial, sans-serif;
                   <!-- <p>Ready to get started? Then click the button below.</p> -->
                   <!-- Action -->
                   <!-- <p style="font-size: 13px;">If you’re having trouble with the button above, copy and paste the URL below into your web browser.</p>
-                  <p class="f-fallback sub"></p>
+                  <p class="f-fallback sub">${{url}}</p>
                    -->
                  
           
@@ -585,46 +529,4 @@ font-family: Arial, sans-serif;
 </tr>
 </table>
 </body>
-</html>   
-
-        `
-    let transporter = nodemailer.createTransport({
-        host: process.env.EMAIL_HOST,
-        port: process.env.EMAIL_PORT,
-        secure: true,
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASSWORD
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-    });
-    transporter.verify((err, success) => {
-        if (err) {
-            console.log(err)
-        }
-        return console.log('serveris ready to receive message ' + success);
-    })
-
-
-    let info = await transporter.sendMail({
-        from: `"Custom Street Analysts", <${process.env.EMAIL_USER}>`,
-        to: `${data.email}`,
-        subject: "Welcome to Custome Street Analysts Training",
-        html: output // html body
-    },
-        function (err, info) {
-            if (err) {
-                console.log(err)
-                return
-            }
-            console.log("Email sent")
-            return 'Email Sent'
-        })
-}
-
-module.exports = {
-    sendMessage: sendMessage,
-    sendWelcomeMessage: sendWelcomeMessage
-};
+</html>

@@ -146,7 +146,7 @@
                                 <tr>
                                     <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
                                         <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
-                                            <label class="text-uppercase text-bold">Paystack Reference Number: </label>
+                                            <label class="text-uppercase text-bold">Reference Number: </label>
                                             <label class="text-capitalize"><%= user.reference %></label>
                                         </div>
                                     </td>
@@ -165,7 +165,7 @@
                                 <td style="width: 100%; border: 0px solid transparent; font-size: 16px;">
                                     <div class="col-md-12 form-group" style="margin-bottom: 0px !important; font-size: 16px;">
                                         <label class="text-uppercase text-bold">Payment Date: </label>
-                                        <label class="text-capitalize"><%= user.createdAt.getDate() %> - <%= user.createdAt.getMonth() %> - <%= user.createdAt.getFullYear() %></label>
+                                        <label class="text-capitalize"><%= user.createdAt.toString().replace("(West Africa Standard Time)", "") %></label>
                                     </div>
                                 </td>
                             </tr>
