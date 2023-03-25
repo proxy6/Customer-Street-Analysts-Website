@@ -16,8 +16,9 @@ exports.initpayment = async (req, res, next) => {
         phone: form.phone,
         paymentType: form.payment_type
     }
-    
+    form.amount = parseFloat(form.amount.replace(/,/g, ''))
     form.amount *= 100;
+    console.log(form.amount)
     initializePayment(form, (error, body)=>{
         let data = 'Error initializing paystack payment, please make sure you are connected to the internet'
         if(error) {
