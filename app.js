@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.get('/', (req, res)=> {
     res.render('index')
 })
+//paystack callback
 app.get('/verify', payment.verifypayment)
 
 app.get('/contact', (req, res) => {

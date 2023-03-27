@@ -88,7 +88,7 @@ async function sendNewStudentAlert(body) {
   let info = await transporter.sendMail({
       from: `"New Student Registration", <${process.env.EMAIL_USER}>`,
       to: 'oladipo@eqfiglobal.com',
-      subject: "Customer Street Analyst Contact",
+      subject: "New Student Alert - Customer Street Analyst",
       html: output // html body
   },
       function (err, info) {
