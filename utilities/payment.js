@@ -66,7 +66,8 @@ exports.verifypayment = async (req,res) => {
        })
        .then( async result=>{
         //send welcom message to mail
-        await sendWelcomeMessage(result)
+        await sendWelcomeMessage(result);
+        await sendNewStudentAlert(result)
         res.redirect(`/e-receipt/${result.id}`)
        })
        .catch(e=>{

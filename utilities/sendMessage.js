@@ -7,8 +7,8 @@ async function sendMessage(body) {
         <ul>
         <li>Name: ${body.name}</li>
         <li>Email: ${body.email}</li>
-        <li>Email: ${body.phone}</li>
-        <li>Email: ${body.interest}</li>
+        <li>Phone: ${body.phone}</li>
+        <li>Interest: ${body.interest}</li>
         <li>Date: ${new Date()}</li>
         </ul>
         <h3>Message:</h3>
@@ -50,6 +50,56 @@ async function sendMessage(body) {
         })
 }
 
+async function sendNewStudentAlert(body) {
+  const output = `
+      <p>You have a new student</p>
+      <h3>Profile Details</h3>
+      <ul>
+      <li>Name: ${body.fname} ${body.lname}</li>
+      <li>Email: ${body.email}</li>
+      <li>Phone: ${body.phone}</li>
+      <li>Amount Paid: ${body.amount} </li>
+      <li>Payment Type: ${body.paymentType}</li>
+      <li>Date: ${new Date()}</li>
+      </ul>
+      <h3>Message:</h3>
+      <p>Please Proceed to add their email to the slack workspace</p>
+      `
+  let transporter = nodemailer.createTransport({
+      host: process.env.EMAIL_HOST,
+      port: process.env.EMAIL_PORT,
+      secure: true,
+      auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASSWORD
+      },
+      tls: {
+          rejectUnauthorized: false
+      }
+  });
+  transporter.verify((err, success) => {
+      if (err) {
+          console.log(err)
+      }
+      return console.log('serveris ready to receive message ' + success);
+  })
+
+
+  let info = await transporter.sendMail({
+      from: '"Custom Street Analysts Website Contact", <mail@customstreetanalysts.com>',
+      to: 'progresseze@gmail.com',
+      subject: "Customer Street Analyst Contact",
+      html: output // html body
+  },
+      function (err, info) {
+          if (err) {
+              console.log(err)
+              return
+          }
+          console.log("Email sent")
+          return 'Email Sent'
+      })
+}
 
 
 async function sendWelcomeMessage(data) {
@@ -626,5 +676,6 @@ font-family: Arial, sans-serif;
 
 module.exports = {
     sendMessage: sendMessage,
-    sendWelcomeMessage: sendWelcomeMessage
+    sendWelcomeMessage: sendWelcomeMessage,
+    sendNewStudentAlert: sendNewStudentAlert
 };
