@@ -2,7 +2,7 @@ const request = require('request');
 const path = require('path')
 const _ = require('lodash');
 const {Payment} = require('../models/payment.model');
-const { sendWelcomeMessage } = require('./sendMessage');
+const { sendWelcomeMessage, sendNewStudentAlert } = require('./sendMessage');
 const {initializePayment, verifyPayment} = require('./paystack')(request);
 
 
@@ -71,8 +71,9 @@ exports.verifypayment = async (req,res) => {
         res.redirect(`/e-receipt/${result.id}`)
        })
        .catch(e=>{
-        console.log(e)
-        res.status(500).send('an error occured')
+        res.status(500).render('error', {
+            data:e,
+        })
        })
       
     })

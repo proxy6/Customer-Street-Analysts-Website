@@ -36,7 +36,7 @@ async function sendMessage(body) {
 
     let info = await transporter.sendMail({
         from: `"Custom Street Analysts Website Contact", <${process.env.EMAIL_USER}>`,
-        to: 'progresseze@gmail.com',
+        to: 'oladipo@eqfiglobal.com',
         subject: "Customer Street Analyst Contact",
         html: output // html body
     },
@@ -87,7 +87,7 @@ async function sendNewStudentAlert(body) {
 
   let info = await transporter.sendMail({
       from: `"New Student Registration", <${process.env.EMAIL_USER}>`,
-      to: 'progresseze@gmail.com',
+      to: 'oladipo@eqfiglobal.com',
       subject: "Customer Street Analyst Contact",
       html: output // html body
   },

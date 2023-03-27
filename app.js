@@ -18,9 +18,7 @@ app.get('/', (req, res)=> {
     res.render('index')
 })
 app.get('/verify', payment.verifypayment)
-app.get('/error', (req, res)=>{
-    res.render('error')
-})
+
 app.get('/contact', (req, res) => {
     res.render('contact');
 })
@@ -36,6 +34,9 @@ app.post('/contact-us', async (req, res) => {
 
 app.get('/e-receipt/:id', payment.getReceipt)
 
+app.get('*', (req, res)=>{
+    res.render("not-found")
+})
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
